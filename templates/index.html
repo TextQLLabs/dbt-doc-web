@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBT Documentor Tool</title>
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <header>                
+        <img src="{{ url_for('static', filename='textql-logo.png') }}" alt="Chatbot Logo" class="chatbot-logo">
+        <h1>DBT Documentor Tool</h1>
+    </header>
+    
+    <div class="container">
+        <div class="left-panel">
+            <div class="title1">
+              Put your SQL model in the left panel                
+            </div>
+            <div class="title2">                
+              Or choose one of these example models:
+            </div>
+            <div class="options">
+              <a href="#" onclick="updatePlaceholderByIndex(0)">
+                <div class="option">
+                  <div class="option-title">Customers and Orders</div>
+                  <div class="option-description">A model that includes customers and their orders</div>
+                </div>
+              </a>
+              <a href="#" onclick="updatePlaceholderByIndex(1)">
+                <div class="option">
+                  <div class="option-title">Monthly Revenue</div>
+                  <div class="option-description">A model that calculates monthly revenue</div>
+                </div>
+              </a>
+              <a href="#" onclick="updatePlaceholderByIndex(2)">
+                <div class="option">
+                  <div class="option-title">COVID19 Cases</div>
+                  <div class="option-description">A model that tracks COVID19 cases</div>
+                </div>
+              </a>
+            </div>
+        </div>
+        <div class="left-column">
+            <p class="action-label">Choose an action for your model...</p>    
+            <div class="input-container">
+                <select id="object-select" onchange="updateButtonVisibility()">
+                    <option value="dModel">Document Model</option>
+                    <option value="gMetric">Generate Metric</option>
+                </select>
+                <button class="document-button" id="documentButton" onclick="performDocument()">Document</button>
+                <button class="genmetric-button" id="genmetricButton" style="display: none;" onclick="generateMetric()">Generate</button>
+            </div>                        
+            <textarea id="user-input" placeholder="Put your model's content here..."></textarea>
+            <label for="file-input" class="file-input-button">Load Model from File</label>
+            <input type="file" id="file-input" accept=".sql" onchange="loadFile(event)">            
+        </div>
+        <div class="right-column">
+            <div class="answer-container">
+                <textarea id="answer"></textarea>
+            </div>            
+            <div class="download-container">
+                <button onclick="performDownload()" id="downloadButton">Download</button>
+            </div>
+        </div>        
+    </div>
+    <div class="explanation-container">
+        <textarea id="explanation"></textarea>
+    </div>
+
+    <div id="popup-container">
+        <div id="popup">
+          <div id="popup-header">            
+            <img src="{{ url_for('static', filename='dbtLogo.png') }}" alt="dbtLogo">
+            <!-- <h2>Welcome!</h2>             -->
+            <img src="{{ url_for('static', filename='anthropicLogo.png') }}" alt="AnthropicLogo">
+          </div>
+          <div id="popup-content">
+            <h2>This tool is powered by the Anthropic's model Claude 2.0!</h2>
+
+            <p>The current web app uses LLMs to generate markdown documentation and metrics for DBT models. 
+                The generated content can be downloaded as a markdown for documentation, and yaml/sql files for metrics.</p>
+            <p1>It is important to note that we do not store any user data at any time. The resulting content is generated through the Anthropic API.</p1>
+            <p>If you have any questions, please contact us at info@textql.com</p>
+          </div>
+          <div id="popup-footer">
+            <button id="popup-close-button">Ok... Let's go!</button>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
+ 
