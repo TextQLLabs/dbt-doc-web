@@ -54,10 +54,13 @@
                 </select>
                 <button class="document-button" id="documentButton" onclick="performDocument()">Document</button>
                 <button class="genmetric-button" id="genmetricButton" style="display: none;" onclick="generateMetric()">Generate</button>
-            </div>                        
-            <textarea id="user-input" placeholder="Put your model's content here..."></textarea>
-            <label for="file-input" class="file-input-button">Load Model from File</label>
-            <input type="file" id="file-input" accept=".sql" onchange="loadFile(event)">            
+            </div>                                   
+            <textarea id="user-input" ></textarea>
+            <div class="button-container">
+              <label for="file-input" class="file-input-button">Load Model from File</label>
+              <input type="file" id="file-input" accept=".sql" onchange="loadFile(event)">
+              <button class="clean-button" id="cleanButton" onclick="clean()">Clean</button>
+            </div>                         
         </div>
         <div class="right-column">
             <div class="answer-container">
@@ -84,7 +87,7 @@
 
             <p>The current web app uses LLMs to generate markdown documentation and metrics for DBT models. 
                 The generated content can be downloaded as a markdown for documentation, and yaml/sql files for metrics.</p>
-            <p1>It is important to note that we do not store any user data at any time. The resulting content is generated through the Anthropic API.</p1>
+            <p1>User inputs are sent to the Anthropic API. We do not store or log user inputs. The Anthropic Privacy Policy is linked <a href="https://console.anthropic.com/legal/privacy">here</a> for reference.</p1>
             <p>If you have any questions, please contact us at info@textql.com</p>
           </div>
           <div id="popup-footer">

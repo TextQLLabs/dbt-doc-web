@@ -98,6 +98,24 @@ button:hover {
     visibility: hidden;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.clean-button {
+    position: relative;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;    
+}
+
 .file-input-button {
     position: relative;
     display: inline-block;
@@ -108,6 +126,7 @@ button:hover {
     cursor: pointer;
     font-size: 1em;
     border-radius: 5px;
+    width: 50%;
 }
 
 .file-input-button:hover {

@@ -139,9 +139,16 @@ function updatePlaceholderByIndex(ind) {
   userInput.value = placeholderOptions[ind];
 }
 
+function clean() {
+  userInput.value = '';
+  answerTextArea.value = '';
+}
+
+updatePlaceholderByIndex(0);
+
 userInput.addEventListener('click', function() {
   //userInput.value = userInput.getAttribute('placeholder');
-  userInput.value = '';
+  //userInput.value = '';
 });
 
 function spinningButton(buttonId) {
